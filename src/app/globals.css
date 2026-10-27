@@ -1,0 +1,356 @@
+@import "tailwindcss";
+
+/*
+ * IT Vidya design tokens.
+ * A warm paper base, deep forest-teal accents and restrained turmeric/clay
+ * highlights. Text colours meet WCAG AA contrast on the paper background.
+ */
+@theme {
+  --font-display: "Fraunces Variable", "Iowan Old Style", Georgia, serif;
+  --font-serif: "Source Serif 4 Variable", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Source Sans 3 Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --color-paper: #f7f3ec;
+  --color-paper-deep: #efe8dc;
+  --color-card: #fdfbf7;
+  --color-ink: #1b2422;
+  --color-ink-soft: #3d4845;
+  --color-muted: #5a6461;
+  --color-line: #ddd3c3;
+  --color-line-soft: #e8e0d2;
+
+  --color-forest: #1d4a42;
+  --color-forest-deep: #133530;
+  --color-forest-soft: #dbe7e1;
+  --color-teal: #2a6f66;
+  --color-turmeric: #c98a2e;
+  --color-turmeric-ink: #8a5a14;
+  --color-turmeric-soft: #f5e6cb;
+  --color-clay: #a9523a;
+
+  /* Domain accents — used sparingly for marks and illustrations. */
+  --color-d-self: #b9772a;
+  --color-d-relationships: #a9523a;
+  --color-d-nature: #4c7537;
+  --color-d-philosophy: #4b4f8c;
+  --color-d-learning: #22706a;
+  --color-d-society: #3d5d7d;
+  --color-d-work: #8f6d22;
+  --color-d-community: #2d6a4c;
+
+  --radius-card: 1.25rem;
+  --shadow-soft: 0 1px 2px rgb(27 36 34 / 0.04), 0 8px 24px -12px rgb(27 36 34 / 0.12);
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    color: var(--color-ink);
+    text-wrap: balance;
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--color-turmeric-soft);
+    color: var(--color-ink);
+  }
+
+  a {
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-turmeric);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  summary {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  .container-page {
+    width: 100%;
+    max-width: 76rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-page {
+      padding-inline: 2rem;
+    }
+  }
+
+  .container-prose {
+    width: 100%;
+    max-width: 44rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-teal);
+  }
+
+  .prose-body {
+    font-family: var(--font-serif);
+    font-size: 1.1875rem;
+    line-height: 1.7;
+    color: var(--color-ink-soft);
+  }
+
+  .prose-body p + p {
+    margin-top: 1.1em;
+  }
+
+  .link-quiet {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+    transition: text-decoration-color 150ms ease;
+  }
+
+  .link-quiet:hover {
+    text-decoration-color: currentColor;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 2.875rem;
+    padding: 0.625rem 1.375rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.2;
+    text-decoration: none;
+    transition:
+      background-color 150ms ease,
+      color 150ms ease,
+      border-color 150ms ease,
+      transform 150ms ease;
+  }
+
+  .btn-primary {
+    background: var(--color-forest);
+    color: #fff;
+  }
+
+  .btn-primary:hover {
+    background: var(--color-forest-deep);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-forest);
+    box-shadow: inset 0 0 0 1.5px var(--color-forest);
+  }
+
+  .btn-secondary:hover {
+    background: var(--color-forest-soft);
+  }
+
+  .card {
+    background: var(--color-card);
+    border: 1px solid var(--color-line-soft);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    min-height: 2.25rem;
+    padding: 0.25rem 0.875rem;
+    border-radius: 999px;
+    border: 1px solid var(--color-line);
+    background: var(--color-card);
+    font-size: 0.9375rem;
+    color: var(--color-ink-soft);
+    transition:
+      background-color 150ms ease,
+      border-color 150ms ease;
+  }
+
+  .chip:hover {
+    border-color: var(--color-teal);
+  }
+
+  .chip[aria-pressed="true"],
+  .chip[aria-current="true"] {
+    background: var(--color-forest);
+    border-color: var(--color-forest);
+    color: #fff;
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.125rem 0.625rem;
+    border-radius: 999px;
+    background: var(--color-paper-deep);
+    font-size: 0.875rem;
+    color: var(--color-ink-soft);
+    text-decoration: none;
+  }
+
+  a.tag:hover {
+    background: var(--color-forest-soft);
+    color: var(--color-forest-deep);
+  }
+
+  .rule-ornament {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--color-line);
+  }
+
+  .rule-ornament::before,
+  .rule-ornament::after {
+    content: "";
+    height: 1px;
+    flex: 1;
+    background: currentColor;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -4rem;
+    z-index: 100;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.5rem;
+    background: var(--color-forest);
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    transition: top 150ms ease;
+  }
+
+  .skip-link:focus {
+    top: 1rem;
+  }
+}
+
+/* Gentle motion for the hero illustration; disabled for reduced-motion users. */
+@keyframes drift {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.motion-drift {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: drift 240s linear infinite;
+}
+
+.motion-breathe {
+  animation: breathe 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  header[data-site-header],
+  footer[data-site-footer],
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+  }
+}
+
+/* Integral map interactions */
+.map-link .node-ring {
+  transition:
+    fill 150ms ease,
+    stroke-width 150ms ease;
+}
+
+.map-link:hover .node-ring {
+  fill: var(--color-forest-soft);
+}
+
+.map-link:hover text {
+  text-decoration: underline;
+}
+
+.map-link:focus {
+  outline: none;
+}
+
+.map-link:focus-visible .node-ring {
+  stroke: var(--color-turmeric);
+  stroke-width: 5;
+}
+
+.map-link:focus-visible text {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
