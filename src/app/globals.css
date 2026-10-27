@@ -1,12 +1,28 @@
 @import "tailwindcss";
 
 /*
+ * Fontsource's latin-ext subset of Fraunces builds letters such as "ā" from a
+ * combining macron that lives in a different subset, so the accent is lost.
+ * Transliteration characters in display text are therefore drawn from
+ * Source Serif 4, which renders them correctly.
+ */
+@font-face {
+  font-family: "IT Translit";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 900;
+  src: url("../../node_modules/@fontsource-variable/source-serif-4/files/source-serif-4-latin-ext-wght-normal.woff2")
+    format("woff2-variations");
+  unicode-range: U+0100-024F, U+1E00-1EFF;
+}
+
+/*
  * IT Vidya design tokens.
  * A warm paper base, deep forest-teal accents and restrained turmeric/clay
  * highlights. Text colours meet WCAG AA contrast on the paper background.
  */
 @theme {
-  --font-display: "Fraunces Variable", "Iowan Old Style", Georgia, serif;
+  --font-display: "IT Translit", "Fraunces Variable", "Iowan Old Style", Georgia, serif;
   --font-serif: "Source Serif 4 Variable", "Iowan Old Style", Georgia, serif;
   --font-sans: "Source Sans 3 Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 
@@ -129,6 +145,18 @@
     color: var(--color-teal);
   }
 
+  .eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 1.5rem;
+    height: 2px;
+    margin-right: 0.625rem;
+    border-radius: 2px;
+    background: var(--color-turmeric);
+    vertical-align: middle;
+    transform: translateY(-1px);
+  }
+
   .prose-body {
     font-family: var(--font-serif);
     font-size: 1.1875rem;
@@ -194,6 +222,17 @@
     border: 1px solid var(--color-line-soft);
     border-radius: var(--radius-card);
     box-shadow: var(--shadow-soft);
+    transition:
+      box-shadow 200ms ease,
+      transform 200ms ease,
+      border-color 200ms ease;
+  }
+
+  a.card:hover,
+  .card:has(a:hover) {
+    box-shadow:
+      0 1px 2px rgb(27 36 34 / 0.05),
+      0 18px 40px -18px rgb(27 36 34 / 0.28);
   }
 
   .chip {
@@ -353,4 +392,11 @@
 .map-link:focus-visible text {
   text-decoration: underline;
   text-decoration-thickness: 2px;
+}
+
+/* Faint dotted field used behind the hero */
+.bg-dots {
+  background-image: radial-gradient(rgb(29 74 66 / 0.13) 1px, transparent 1.2px);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(ellipse at 70% 40%, #000 0%, transparent 70%);
 }

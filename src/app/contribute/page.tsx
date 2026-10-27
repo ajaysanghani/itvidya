@@ -165,17 +165,34 @@ export default function ContributePage() {
               intro={
                 <p>
                   Fill in what you can. You will get a formatted proposal to{" "}
-                  {site.contact.email ? "email to us" : "keep until our contact address is published"}.
+                  {site.contact.email ? "email to us" : "paste into our Contact Us form"}.
                 </p>
               }
             />
             <div className="mt-8">
-              <ContactChannel />
+              {site.contact.email ? (
+                <ContactChannel />
+              ) : (
+                <div className="card p-6">
+                  <p className="eyebrow">Just a quick note?</p>
+                  <p className="mt-3 text-ink-soft">
+                    For short questions, corrections or ideas, our Contact Us form is the fastest way to reach the team.
+                  </p>
+                  <Link href="/contact" className="btn btn-secondary mt-5">
+                    Contact us
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
           <div className="card p-6 sm:p-8 lg:col-span-8">
             <Suspense fallback={<p className="text-ink-soft">Loading the proposal form…</p>}>
-              <ProposalForm contactEmail={site.contact.email} domains={domains} resourceTitles={resourceTitles} />
+              <ProposalForm
+                contactEmail={site.contact.email}
+                hasContactForm={Boolean(site.contact.notionFormUrl)}
+                domains={domains}
+                resourceTitles={resourceTitles}
+              />
             </Suspense>
           </div>
         </div>

@@ -8,7 +8,7 @@ export const dynamic = "force-static";
 
 export default function Image() {
   return renderOgImage({
-    eyebrow: "A lifelong learning commons",
+    eyebrow: "Inner Transformation · Integral Thinking",
     title: site.headline,
     footer: site.tagline,
   });

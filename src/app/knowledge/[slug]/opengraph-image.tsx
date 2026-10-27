@@ -16,6 +16,6 @@ export default async function Image({ params }: { params: Promise<{ slug: string
   return renderOgImage({
     eyebrow: r ? domainTitle(r.domain) : "Knowledge",
     title: r?.title ?? "IT Vidya",
-    footer: "Learn Deeply. Live Consciously. Contribute Meaningfully.",
+    footer: "IT Vidya · Inner Transformation · Integral Thinking",
   });
 }

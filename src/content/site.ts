@@ -6,17 +6,21 @@ import type { License } from "./schema";
  */
 
 const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() || null;
+const notionFormUrl = process.env.NEXT_PUBLIC_NOTION_FORM_URL?.trim() || null;
 
 export const site = {
   name: "IT Vidya",
   domain: "ITVidya.com",
+  /** "IT" holds two meanings at once. */
+  meaning: ["Inner Transformation", "Integral Thinking"] as const,
+  meaningLine: "Inner Transformation · Integral Thinking",
   url: (process.env.NEXT_PUBLIC_SITE_URL || "https://itvidya.com").replace(/\/$/, ""),
   headline: "Understand Yourself. Understand Life. Think Integrally.",
   statement:
     "A lifelong learning space for inner transformation, integral thinking and the exploration of all aspects of life.",
   tagline: "Learn Deeply. Live Consciously. Contribute Meaningfully.",
   description:
-    "IT Vidya is a lifelong learning commons for inner transformation, integral thinking and whole-life learning — exploring the self, relationships, nature, society and collective prosperity.",
+    "IT Vidya — the learning of Inner Transformation and Integral Thinking. A lifelong learning commons exploring the self, relationships, nature, society and collective prosperity.",
   locale: "en_IN",
   /**
    * Contact channel. Leave NEXT_PUBLIC_CONTACT_EMAIL unset until a real,
@@ -26,6 +30,12 @@ export const site = {
   contact: {
     email: contactEmail,
     placeholder: "Contact address to be announced",
+    /**
+     * Public share link of the "Contact Us" Notion Form (Notion database
+     * "IT Vidya — Contact Us" → form view → Share form → anyone with the link).
+     * Submissions land as rows in that Notion database.
+     */
+    notionFormUrl,
   },
   editorialTeam: "IT Vidya Editorial Team",
 } as const;

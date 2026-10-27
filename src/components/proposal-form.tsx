@@ -15,6 +15,8 @@ const TYPES = [
 
 interface Props {
   contactEmail: string | null;
+  /** True when the Notion "Contact Us" form is published on /contact. */
+  hasContactForm: boolean;
   domains: { slug: string; title: string }[];
   resourceTitles: Record<string, string>;
 }
@@ -58,7 +60,7 @@ function compose(d: Draft, typeLabel: string, domainLabel: string) {
   ].join("\n");
 }
 
-export function ProposalForm({ contactEmail, domains, resourceTitles }: Props) {
+export function ProposalForm({ contactEmail, hasContactForm, domains, resourceTitles }: Props) {
   const params = useSearchParams();
   const formId = useId();
   const resultRef = useRef<HTMLDivElement>(null);
@@ -140,7 +142,7 @@ export function ProposalForm({ contactEmail, domains, resourceTitles }: Props) {
       <form onSubmit={onSubmit} noValidate aria-describedby={`${formId}-about`} className="grid gap-6">
         <p id={`${formId}-about`} className="rounded-xl bg-forest-soft/60 px-4 py-3 text-sm text-forest-deep">
           This form does not send anything. It helps you prepare a well-structured proposal, which you can then{" "}
-          {contactEmail ? "send by email or copy" : "copy or download"} yourself.
+          {contactEmail ? "send by email or copy" : "copy into our Contact Us form or download"} yourself.
         </p>
 
         <div className="grid gap-6 sm:grid-cols-2">
@@ -285,11 +287,19 @@ export function ProposalForm({ contactEmail, domains, resourceTitles }: Props) {
             <p className="mt-2 text-ink-soft">
               Nothing has been sent yet. Open it in your email app to send it to {contactEmail}, or copy the text.
             </p>
+          ) : hasContactForm ? (
+            <p className="mt-2 text-ink-soft">
+              <strong className="font-semibold text-ink">Nothing has been sent yet.</strong> Copy the text below, then paste
+              it into our{" "}
+              <a href="/contact" className="link-quiet text-forest">
+                Contact Us form
+              </a>{" "}
+              and choose the topic &ldquo;Contribution or proposal&rdquo;.
+            </p>
           ) : (
             <p className="mt-2 text-ink-soft">
-              <strong className="font-semibold text-ink">Nothing has been sent.</strong> IT Vidya&rsquo;s contact address
-              has not been published yet, so there is currently no way to submit proposals through this site. Please copy
-              or download your proposal and keep it; the contact address will be announced on the{" "}
+              <strong className="font-semibold text-ink">Nothing has been sent.</strong> Our Contact Us form is still being
+              set up, so please copy or download your proposal and keep it for now. The form will appear on the{" "}
               <a href="/contact" className="link-quiet text-forest">
                 Contact page
               </a>

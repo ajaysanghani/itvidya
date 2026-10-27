@@ -1,4 +1,5 @@
 import { DomainGlyph } from "@/components/domain-glyph";
+import { Mark } from "@/components/wordmark";
 import type { Domain, DomainSlug } from "@/content/schema";
 
 /**
@@ -66,7 +67,7 @@ export function IntegralMap({ domains, variant, highlight, className }: Props) {
       aria-hidden={interactive ? undefined : true}
       focusable="false"
     >
-      <g className={variant === "decorative" ? "motion-drift" : undefined}>
+      <g>
         {/* Orbits */}
         <circle cx={C} cy={C} r={R + 54} fill="none" stroke="var(--color-line-soft)" strokeWidth="1" />
         <circle
@@ -122,7 +123,9 @@ export function IntegralMap({ domains, variant, highlight, className }: Props) {
           strokeWidth="1.25"
           className={variant === "decorative" ? "motion-breathe" : undefined}
         />
-        <circle cx={C} cy={C} r="7" fill="var(--color-turmeric)" />
+        <svg x={C - 30} y={C - 30} width="60" height="60" viewBox="0 0 48 48" overflow="visible">
+          <Mark className="" />
+        </svg>
 
       {/* Nodes */}
       {domains.map((d, i) => {

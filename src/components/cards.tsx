@@ -13,8 +13,18 @@ export function DomainCard({ domain, headingLevel = "h3" }: { domain: Domain; he
       href={`/domains/${domain.slug}`}
       className="card group relative flex h-full flex-col p-6 no-underline transition-[transform,border-color] duration-200 hover:-translate-y-0.5 hover:border-line"
     >
+      <span
+        aria-hidden="true"
+        className="absolute inset-x-6 top-0 h-[3px] origin-left scale-x-0 rounded-b-full transition-transform duration-300 group-hover:scale-x-100"
+        style={{ background: `var(--color-d-${domain.slug})` }}
+      />
       <div className="flex items-start justify-between">
-        <DomainGlyph slug={domain.slug} className="size-11" />
+        <span
+          className="inline-flex size-14 items-center justify-center rounded-2xl"
+          style={{ background: `color-mix(in srgb, var(--color-d-${domain.slug}) 11%, transparent)` }}
+        >
+          <DomainGlyph slug={domain.slug} className="size-9" />
+        </span>
         <span className="font-display text-sm text-muted tabular-nums" aria-hidden="true">
           {String(domain.number).padStart(2, "0")}
         </span>

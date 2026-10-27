@@ -71,3 +71,13 @@ Visual review was done from full-page screenshots at desktop and mobile widths f
 5. **Static hosting:** extension-less OG image files may need a `Content-Type: image/png` rule on some hosts (see README).
 6. **Without JavaScript**, the journey page shows only step 1 (other steps remain in the HTML for search engines); all other pages work fully without JavaScript.
 7. Light theme only in Version 1.
+
+## 7. Update — IT meaning, Contact Us form, logo and design (27 October 2026)
+
+- **IT = Inner Transformation · Integral Thinking** is now highlighted throughout: header descriptor, hero badge, a new "The meaning of IT" section on the homepage, the About page name section, footer, page titles, site description and Open Graph images.
+- **New logo:** a serif "IT" monogram on a forest tile. A lamp flame rises from the "I" (inner transformation), and an open orbit circles both letters (integral thinking). It is used in the header, footer, favicon, OG images and at the centre of the integral map.
+- **Contact Us form (Notion):** created the Notion database "IT Vidya — Contact Us" with a form view and an Inbox board. `/contact` embeds the form from `NEXT_PUBLIC_NOTION_FORM_URL`, with a fallback link. A "Contact us" button is now in the header and footer. Privacy texts were updated to say that contact submissions are stored in Notion.
+- **Design polish:** dotted hero backdrop, tinted domain glyph tiles with colour accents on hover, eyebrow rule ornaments, deeper card hover shadows, and a dark forest footer.
+- **Font fix:** Fontsource's latin-ext subset of Fraunces loses the macron on letters like "ā". Transliteration characters in display text now fall back to Source Serif 4 through a unicode-range font face.
+- Re-verified: lint, typecheck, build (74 outputs), link crawl (0 problems), 39/39 browser checks, axe with 0 violations at desktop and mobile widths.
+- **Manual steps remaining:** in Notion, add the remaining form questions, enable "Anyone with the link" sharing, and set `NEXT_PUBLIC_NOTION_FORM_URL`.

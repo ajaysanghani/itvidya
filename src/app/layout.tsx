@@ -11,7 +11,7 @@ import { site } from "@/content/site";
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — ${site.headline}`,
+    default: `${site.name} — Inner Transformation & Integral Thinking`,
     template: `%s · ${site.name}`,
   },
   description: site.description,

@@ -78,10 +78,11 @@ export const principles: Principle[] = [
     id: "privacy",
     title: "Privacy",
     statement:
-      "Learning should not require surveillance. Version 1 of IT Vidya has no accounts, no tracking of individual learners and no forms that send personal data to a server.",
+      "Learning should not require surveillance. Version 1 of IT Vidya has no accounts and no tracking of individual learners. The only personal data we receive is what people choose to send us.",
     practice: [
       "Journey progress, if you mark it, is stored only in your own browser.",
-      "We collect only the information people choose to send us directly, and use it only for the purpose it was sent.",
+      "The Contact Us form is a Notion Form: submissions are stored in IT Vidya's Notion workspace, used only to respond and for the purpose they were sent, and are subject to Notion's privacy policy.",
+      "The contribution proposal form sends nothing; it only prepares text for you to send yourself.",
       "Any future analytics or data collection will be disclosed here before it is introduced.",
     ],
   },

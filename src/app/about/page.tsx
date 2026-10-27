@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, PageHeader, SectionHeading } from "@/components/ui";
+import { Mark } from "@/components/wordmark";
 import { site } from "@/content/site";
 import { getResources } from "@/lib/content";
 import { pageMetadata } from "@/lib/seo";
@@ -7,7 +8,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "About IT Vidya",
   description:
-    "IT Vidya is a lifelong learning commons for inner transformation, integral thinking and whole-life learning. Learn about our vision, approach and what Version 1 includes.",
+    "IT Vidya — IT stands for Inner Transformation and Integral Thinking. Learn about our vision, approach, the meaning of the name and what Version 1 includes.",
   path: "/about",
 });
 
@@ -19,7 +20,7 @@ const isList = [
 ];
 
 const isNotList = [
-  "An information technology (IT) education website",
+  "An information-technology education website — here, IT means Inner Transformation and Integral Thinking",
   "A religious organisation, or the voice of any single school of thought",
   "A coaching programme, therapy or a guaranteed path to transformation",
   "A course marketplace or a certification body",
@@ -88,17 +89,44 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section aria-labelledby="name-title" className="border-y border-line-soft bg-card py-16">
-        <div className="container-prose text-center">
-          <p className="eyebrow">The name</p>
-          <h2 id="name-title" className="mt-3 text-3xl font-medium">
-            IT Vidya
-          </h2>
-          <p className="prose-body mt-5">
-            <em>Vidyā</em> is a Sanskrit word for knowledge, learning and understanding — often used for knowledge that
-            illuminates rather than merely informs. &ldquo;IT Vidya&rdquo; is simply our name. It is not an information
-            technology platform, and the letters are not meant as an acronym.
-          </p>
+      <section aria-labelledby="name-title" className="relative overflow-hidden bg-forest py-20 text-white">
+        <div className="container-page relative grid items-center gap-12 lg:grid-cols-12">
+          <div className="flex justify-center lg:col-span-4">
+            <div className="rounded-[3rem] bg-white/[0.06] p-6 ring-1 ring-white/15">
+              <Mark className="size-36 rounded-[22%] shadow-[0_24px_48px_-12px_rgba(0,0,0,0.45)] ring-1 ring-white/25 sm:size-44" />
+            </div>
+          </div>
+          <div className="lg:col-span-8">
+            <p className="eyebrow text-turmeric-soft!">The name</p>
+            <h2 id="name-title" className="mt-3 text-4xl font-medium text-white sm:text-5xl">
+              IT Vidya
+            </h2>
+            <dl className="mt-8 grid gap-6 sm:grid-cols-3">
+              <div>
+                <dt className="font-display text-2xl text-white">
+                  <span className="text-turmeric-soft">I</span>nner <span className="text-turmeric-soft">T</span>ransformation
+                </dt>
+                <dd className="mt-2 text-white/75">Seeing ourselves clearly, so that we live and act from understanding.</dd>
+              </div>
+              <div>
+                <dt className="font-display text-2xl text-white">
+                  <span className="text-turmeric-soft">I</span>ntegral <span className="text-turmeric-soft">T</span>hinking
+                </dt>
+                <dd className="mt-2 text-white/75">Seeing the whole — how self, relationships, nature and society connect.</dd>
+              </div>
+              <div>
+                <dt className="font-display text-2xl text-white">
+                  Vidyā
+                </dt>
+                <dd className="mt-2 text-white/75">From the Sanskrit <em>vidyā</em>: knowledge and learning — knowledge that illuminates.</dd>
+              </div>
+            </dl>
+            <p className="mt-8 max-w-2xl text-white/80">
+              &ldquo;IT&rdquo; holds both meanings at once. The logo shows them together: a lamp flame rising from the
+              &ldquo;I&rdquo; for inner transformation, and an open circle around both letters for integral thinking. IT
+              Vidya is not an information-technology platform.
+            </p>
+          </div>
         </div>
       </section>
 

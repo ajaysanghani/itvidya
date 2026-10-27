@@ -14,7 +14,7 @@ import {
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: `${site.name} — ${site.headline}`,
+  title: `${site.name} — Inner Transformation & Integral Thinking`,
   description: site.description,
   path: "/",
   absoluteTitle: true,
@@ -63,9 +63,20 @@ export default function HomePage() {
     <>
       {/* Hero */}
       <section aria-labelledby="hero-title" className="relative overflow-hidden">
-        <div className="container-page grid items-center gap-10 pt-12 pb-16 sm:pt-16 lg:grid-cols-12 lg:gap-8 lg:pt-20 lg:pb-24">
+        <div aria-hidden="true" className="bg-dots pointer-events-none absolute inset-0" />
+        <div className="container-page relative grid items-center gap-10 pt-12 pb-16 sm:pt-16 lg:grid-cols-12 lg:gap-8 lg:pt-20 lg:pb-24">
           <div className="lg:col-span-7">
-            <p className="eyebrow">A lifelong learning commons</p>
+            <p className="inline-flex flex-wrap items-center gap-x-2 gap-y-1 rounded-full border border-line bg-card/80 px-4 py-1.5 text-sm text-ink-soft shadow-[var(--shadow-soft)]">
+              <span className="font-display font-semibold text-forest">IT</span>
+              <span aria-hidden="true" className="text-line">|</span>
+              <span>
+                <b className="font-semibold text-turmeric-ink">I</b>nner <b className="font-semibold text-turmeric-ink">T</b>ransformation
+              </span>
+              <span aria-hidden="true" className="text-turmeric">+</span>
+              <span>
+                <b className="font-semibold text-turmeric-ink">I</b>ntegral <b className="font-semibold text-turmeric-ink">T</b>hinking
+              </span>
+            </p>
             <h1
               id="hero-title"
               className="mt-5 text-[2.6rem] leading-[1.04] font-medium sm:text-6xl lg:text-[4.25rem]"
@@ -90,6 +101,67 @@ export default function HomePage() {
           <div className="relative mx-auto w-full max-w-md lg:col-span-5 lg:max-w-none">
             <div aria-hidden="true" className="absolute inset-[8%] rounded-full bg-turmeric-soft/40 blur-3xl" />
             <IntegralMap domains={domains} variant="decorative" className="relative w-full" />
+          </div>
+        </div>
+      </section>
+
+      {/* What IT stands for */}
+      <section aria-labelledby="it-title" className="relative overflow-hidden bg-forest text-white">
+        <svg aria-hidden="true" viewBox="0 0 800 800" className="pointer-events-none absolute -top-64 -left-64 size-[50rem] text-white/[0.05]">
+          <circle cx="400" cy="400" r="390" fill="none" stroke="currentColor" strokeWidth="2" />
+          <circle cx="400" cy="400" r="280" fill="none" stroke="currentColor" strokeWidth="2" />
+          <circle cx="400" cy="400" r="170" fill="none" stroke="currentColor" strokeWidth="2" />
+        </svg>
+        <div className="container-page relative grid items-center gap-12 py-20 lg:grid-cols-12 lg:py-24">
+          <div className="lg:col-span-5">
+            <p className="eyebrow text-turmeric-soft!">The meaning of IT</p>
+            <h2 id="it-title" className="mt-4 text-4xl leading-[1.05] font-medium text-white sm:text-5xl">
+              Two kinds of learning.
+              <br />
+              <span className="text-turmeric-soft italic">One name.</span>
+            </h2>
+            <p className="mt-6 max-w-md text-lg text-white/80">
+              In IT Vidya, &ldquo;IT&rdquo; stands for both <strong className="font-semibold text-white">Inner Transformation</strong>{" "}
+              and <strong className="font-semibold text-white">Integral Thinking</strong>. <em>Vidyā</em> is the Sanskrit word for
+              knowledge that illuminates. Together: the learning that changes how we see ourselves, and how we see the whole.
+            </p>
+          </div>
+          <div className="grid gap-5 sm:grid-cols-2 lg:col-span-7">
+            {[
+              {
+                word: ["Inner", "Transformation"],
+                kicker: "Looking within",
+                text: "The patient, practical work of seeing ourselves clearly — our needs, feelings, intentions and habits — so that our actions come more from understanding than from reaction.",
+                href: "/domains/self",
+                link: "Begin with the Self",
+              },
+              {
+                word: ["Integral", "Thinking"],
+                kicker: "Seeing the whole",
+                text: "The habit of seeing a question from many sides — inner and outer, personal and collective, short and long term — and noticing how the parts connect.",
+                href: "/knowledge/what-is-integral-thinking",
+                link: "What is integral thinking?",
+              },
+            ].map((c, i) => (
+              <article key={c.kicker} className="relative flex flex-col rounded-[1.5rem] bg-white/[0.07] p-7 ring-1 ring-white/15 backdrop-blur-sm">
+                <span aria-hidden="true" className="absolute top-5 right-6 font-display text-6xl leading-none text-white/10">
+                  {i === 0 ? "I" : "T"}
+                </span>
+                <p className="text-xs font-semibold tracking-[0.14em] text-turmeric-soft uppercase">{c.kicker}</p>
+                <h3 className="mt-4 font-display text-3xl leading-tight text-white">
+                  {c.word.map((w) => (
+                    <span key={w} className="block">
+                      <span className="text-turmeric-soft">{w[0]}</span>
+                      {w.slice(1)}
+                    </span>
+                  ))}
+                </h3>
+                <p className="mt-4 flex-1 text-white/80">{c.text}</p>
+                <Link href={c.href} className="mt-6 inline-flex items-center gap-1.5 font-semibold text-white no-underline hover:text-turmeric-soft">
+                  {c.link} <ArrowRight />
+                </Link>
+              </article>
+            ))}
           </div>
         </div>
       </section>

@@ -4,7 +4,7 @@
 
 IT Vidya (ITVidya.com) is a lifelong learning commons for inner transformation, integral thinking and whole-life learning. This repository contains Version 1: a fully static, content-driven website.
 
-> IT Vidya is **not** an information-technology education site. "IT Vidya" is simply the name.
+> **IT = Inner Transformation · Integral Thinking.** *Vidyā* is Sanskrit for knowledge that illuminates. IT Vidya is not an information-technology education site.
 
 ## What's included
 
@@ -25,7 +25,7 @@ IT Vidya (ITVidya.com) is a lifelong learning commons for inner transformation, 
 - Tailwind CSS 4 (design tokens in `src/app/globals.css`)
 - Self-hosted open-licence fonts via Fontsource: Fraunces, Source Serif 4, Source Sans 3 (SIL Open Font License)
 - All illustrations are original inline SVG — no external images or hotlinked assets
-- No database, CMS, accounts, analytics or backend
+- No database, CMS, accounts, analytics or backend of its own; the Contact Us form is a hosted Notion Form
 
 ShadCN UI was not added: native `<details>`, buttons and links covered every interaction with less JavaScript.
 
@@ -57,9 +57,23 @@ Copy `.env.example` to `.env.local` and adjust:
 | Variable | Purpose |
 | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | Canonical origin for canonical URLs, Open Graph, sitemap and robots. Defaults to `https://itvidya.com`. |
+| `NEXT_PUBLIC_NOTION_FORM_URL` | Public share link of the **Contact Us** Notion Form. When set, `/contact` embeds the form (with an "open in a new tab" fallback). When unset, a clearly labelled "being set up" notice is shown. |
 | `NEXT_PUBLIC_CONTACT_EMAIL` | A real, monitored address. **Leave unset until one exists.** When unset, the Contact page and Contribute form show a clearly labelled placeholder and never claim anything was sent. When set, the proposal form offers "Open in email app". |
 
 Both are read at build time, so rebuild after changing them.
+
+## Contact Us form (Notion)
+
+The Contact Us form is a native **Notion Form**. Submissions arrive as rows in the Notion database **"IT Vidya — Contact Us"** (properties: Name, Email, Topic, Message, Related page, Consent, Status, Received), which also has an **Inbox** board grouped by Status.
+
+To publish it:
+
+1. In Notion, open the database → **Contact Us form** view.
+2. Add the questions for Email, Topic, Message, Related page and Consent (Name is already there). Mark Name, Email, Message and Consent as required.
+3. **Share form** → set access to **Anyone with the link** → copy the link.
+4. Set `NEXT_PUBLIC_NOTION_FORM_URL` to that link and rebuild/redeploy.
+
+If Notion refuses to load inside an iframe in some browsers, visitors can still use the "Open the contact form in a new tab" link under the embed.
 
 ## Deployment
 

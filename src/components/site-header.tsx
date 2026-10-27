@@ -44,7 +44,7 @@ export function SiteHeader() {
       data-site-header
       className="sticky top-0 z-40 border-b border-line-soft bg-paper/90 backdrop-blur-sm supports-[backdrop-filter]:bg-paper/80"
     >
-      <div className="container-page flex h-[4.25rem] items-center justify-between gap-6">
+      <div className="container-page flex h-[4.75rem] items-center justify-between gap-6">
         <Wordmark />
 
         <nav aria-label="Main" className="hidden md:block">
@@ -65,6 +65,15 @@ export function SiteHeader() {
                 </li>
               );
             })}
+            <li className="ml-3">
+              <Link
+                href="/contact"
+                aria-current={pathname === "/contact" ? "page" : undefined}
+                className="btn btn-primary min-h-0! px-5! py-2! text-[0.95rem]!"
+              >
+                Contact us
+              </Link>
+            </li>
           </ul>
         </nav>
 
@@ -91,7 +100,7 @@ export function SiteHeader() {
       >
         <nav aria-label="Main (mobile)" className="container-page py-4">
           <ul className="flex flex-col">
-            {[{ href: "/", label: "Home" }, ...mainNav, { href: "/principles", label: "Principles" }, { href: "/contact", label: "Contact" }].map(
+            {[{ href: "/", label: "Home" }, ...mainNav, { href: "/principles", label: "Principles" }, { href: "/contact", label: "Contact us" }].map(
               (item) => {
                 const active = item.href === "/" ? pathname === "/" : isActive(pathname, item.href);
                 return (
